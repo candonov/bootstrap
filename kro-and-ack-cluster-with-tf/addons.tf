@@ -21,7 +21,6 @@ module "eks_blueprints_addons" {
   }
 
   enable_metrics_server               = true
-  enable_aws_load_balancer_controller = true
   enable_external_secrets             = true
   enable_external_dns                 = true
   external_dns_route53_zone_arns      = ["arn:aws:route53:::hostedzone/Z07589007ZVX1K0A3C82"]
@@ -67,7 +66,7 @@ module "eks_ack_addons" {
   }
   enable_dynamodb          = true
   dynamodb = {
-    chart_version = "1.2.28"
+    chart_version = "1.2.18"
   }
   enable_s3                = true
   s3 = {
@@ -77,11 +76,11 @@ module "eks_ack_addons" {
   enable_rds               = true
   enable_route53resolver   = true
   route53resolver = {
-    chart_version = "0.0.21"
+    chart_version = "1.0.4"
   }
   enable_route53           = true
   route53 = {
-    chart_version = "1.0.4"
+    chart_version = "0.0.21"
   }
   enable_sqs               = true
   sqs = {
@@ -109,5 +108,5 @@ module "kro" {
   create_namespace = true
   chart            = "kro"
   chart_version    = "0.2.1"
-  repository       = "oci://public.ecr.aws/kro"
+  repository       = "oci://ghcr.io/kro-run/kro"
 }
