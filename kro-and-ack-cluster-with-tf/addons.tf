@@ -47,28 +47,49 @@ module "eks_ack_addons" {
   # Controllers to enable
   enable_iam               = true
   iam = {
-    chart_version = "1.3.13"
+    chart_version = "1.3.16"
   }
   enable_ec2               = true
   ec2 = {
-    chart_version = "1.2.28"
+    chart_version = "1.3.4"
   }
   enable_eks               = true
+  eks = {
+    chart_version = "1.6.0"
+  }
   enable_kms               = true
+  kms = {
+    chart_version = "1.0.20"
+  }
   enable_acm               = true
-  enable_apigatewayv2      = true
+  acm = {
+    chart_version = "1.0.3"
+  }
   enable_dynamodb          = true
+  dynamodb = {
+    chart_version = "1.2.28"
+  }
   enable_s3                = true
+  s3 = {
+    chart_version = "1.0.22"
+  }
   enable_elasticache       = true
   enable_rds               = true
+  enable_route53resolver   = true
+  route53resolver = {
+    chart_version = "0.0.21"
+  }
   enable_route53           = true
+  route53 = {
+    chart_version = "1.0.4"
+  }
   enable_sqs               = true
   sqs = {
-    chart_version = "1.1.0"
+    chart_version = "1.1.5"
   }
   enable_sns               = true
   sns = {
-    chart_version = "1.0.14"
+    chart_version = "1.1.4"
   }
   enable_secretsmanager    = true
 
@@ -87,6 +108,6 @@ module "kro" {
   namespace        = "kro"
   create_namespace = true
   chart            = "kro"
-  chart_version    = "0.1.0"
+  chart_version    = "0.2.1"
   repository       = "oci://public.ecr.aws/kro"
 }
