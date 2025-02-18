@@ -81,6 +81,14 @@ module "eks_ack_addons" {
   enable_route53           = true
   route53 = {
     chart_version = "0.0.21"
+    values = [
+      yamlencode({
+        featureGates = {
+          ReadOnlyResources = true
+          ResourceAdoption = true
+        }
+      })
+    ]
   }
   enable_sqs               = true
   sqs = {
