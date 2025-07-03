@@ -10,13 +10,13 @@ variable "region" {
 variable "name" {
   description = "EKS Cluster Name and the VPC name"
   type        = string
-  default     = "kro"
+  default     = "demo"
 }
 
 variable "cluster_version" {
   type        = string
   description = "Kubernetes Version"
-  default     = "1.31"
+  default     = "1.33"
 }
 
 variable "capacity_type" {

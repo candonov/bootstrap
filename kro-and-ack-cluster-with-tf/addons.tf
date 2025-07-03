@@ -14,7 +14,7 @@ module "eks_blueprints_addons" {
   enable_argocd = true
   argocd = {
     namespace     = "argocd"
-    chart_version = "7.6.12" # ArgoCD v2.12.6
+    chart_version = "8.1.2" # ArgoCD v3.0.9
     values = [
       templatefile("${path.module}/helm-values/argocd.yaml", {
     })]
@@ -23,7 +23,7 @@ module "eks_blueprints_addons" {
   enable_metrics_server               = true
   enable_external_secrets             = true
   enable_external_dns                 = true
-  external_dns_route53_zone_arns      = ["arn:aws:route53:::hostedzone/Z07589007ZVX1K0A3C82"]
+  #  external_dns_route53_zone_arns      = ["arn:aws:route53:::hostedzone/Z07589007ZVX1K0A3C82"]
 
   depends_on = [module.eks.cluster_addons]
 }
@@ -46,59 +46,59 @@ module "eks_ack_addons" {
   # Controllers to enable
   enable_iam               = true
   iam = {
-    chart_version = "1.3.16"
+    chart_version = "1.4.2"
   }
   enable_ec2               = true
   ec2 = {
-    chart_version = "1.3.4"
+    chart_version = "1.4.8"
   }
-  enable_eks               = true
-  eks = {
-    chart_version = "1.6.0"
-  }
-  enable_kms               = true
-  kms = {
-    chart_version = "1.0.20"
-  }
-  enable_acm               = true
-  acm = {
-    chart_version = "1.0.3"
-  }
-  enable_dynamodb          = true
-  dynamodb = {
-    chart_version = "1.2.18"
-  }
+#  enable_eks               = true
+#  eks = {
+#    chart_version = "1.6.0"
+#  }
+#  enable_kms               = true
+#  kms = {
+#    chart_version = "1.0.20"
+#  }
+#  enable_acm               = true
+#  acm = {
+#    chart_version = "1.0.3"
+#  }
+#  enable_dynamodb          = true
+#  dynamodb = {
+#    chart_version = "1.2.18"
+#  }
   enable_s3                = true
   s3 = {
-    chart_version = "1.0.22"
+    chart_version = "1.0.33"
   }
-  enable_elasticache       = true
-  enable_rds               = true
-  enable_route53resolver   = true
-  route53resolver = {
-    chart_version = "1.0.4"
-  }
-  enable_route53           = true
-  route53 = {
-    chart_version = "0.0.21"
-    values = [
-      yamlencode({
-        featureGates = {
-          ReadOnlyResources = true
-          ResourceAdoption = true
-        }
-      })
-    ]
-  }
-  enable_sqs               = true
-  sqs = {
-    chart_version = "1.1.5"
-  }
-  enable_sns               = true
-  sns = {
-    chart_version = "1.1.4"
-  }
-  enable_secretsmanager    = true
+#  enable_elasticache       = true
+#  enable_rds               = true
+#  enable_route53resolver   = true
+#  route53resolver = {
+#    chart_version = "1.0.4"
+#  }
+#  enable_route53           = true
+#  route53 = {
+#    chart_version = "0.0.21"
+#    values = [
+#      yamlencode({
+#        featureGates = {
+#          ReadOnlyResources = true
+#          ResourceAdoption = true
+#        }
+#      })
+#    ]
+#  }
+#  enable_sqs               = true
+#  sqs = {
+#    chart_version = "1.1.5"
+#  }
+#  enable_sns               = true
+#  sns = {
+#    chart_version = "1.1.4"
+#  }
+#  enable_secretsmanager    = true
 
   tags = local.tags
 }
@@ -115,6 +115,6 @@ module "kro" {
   namespace        = "kro"
   create_namespace = true
   chart            = "kro"
-  chart_version    = "0.2.1"
+  chart_version    = "0.3.0"
   repository       = "oci://ghcr.io/kro-run/kro"
 }
